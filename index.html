@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manuel Olivares | Música para Eventos Corporativos</title>
+    <title id="page-title">Manuel Olivares | Música para Eventos Corporativos</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
         
@@ -22,6 +22,26 @@
             max-width: 600px;
             padding: 40px;
             text-align: center;
+            position: relative;
+        }
+        .lang-switch {
+            position: absolute;
+            top: -10px;
+            right: 0;
+            background: transparent;
+            border: 1px solid #444;
+            color: #aaaaaa;
+            padding: 5px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 400;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s ease;
+        }
+        .lang-switch:hover {
+            border-color: #ffffff;
+            color: #ffffff;
         }
         h1 {
             font-size: 2rem;
@@ -51,10 +71,42 @@
 </head>
 <body>
     <div class="container">
-        <h1>Manuel Olivares</h1>
-        <p>Excelencia en música para eventos corporativos y ceremonias.</p>
+        <!-- Botón para cambiar el idioma -->
+        <button class="lang-switch" id="langBtn" onclick="toggleLanguage()">English</button>
+
+        <h1 id="main-title">Manuel Olivares</h1>
+        <p id="main-desc">Excelencia en música para eventos corporativos y ceremonias.</p>
         
-        <a href="https://wa.me/56987767767?text=Hola%20Manuel,%20quiero%20cotizar%20música%20para%20un%20evento%20corporativo." class="btn">COTIZAR EVENTO</a>
+        <a href="https://wa.me/56987767767?text=Hola%20Manuel,%20quiero%20cotizar%20música%20para%20un%20evento%20corporativo." class="btn" id="cta-link">COTIZAR EVENTO</a>
     </div>
+
+    <script>
+        let currentLang = 'es';
+
+        function toggleLanguage() {
+            const langBtn = document.getElementById('langBtn');
+            const pageTitle = document.getElementById('page-title');
+            const mainDesc = document.getElementById('main-desc');
+            const ctaLink = document.getElementById('cta-link');
+
+            if (currentLang === 'es') {
+                currentLang = 'en';
+                document.documentElement.lang = 'en';
+                langBtn.textContent = 'Español';
+                pageTitle.textContent = 'Manuel Olivares | Corporate Event Music';
+                mainDesc.textContent = 'Excellence in music for corporate events and ceremonies.';
+                ctaLink.textContent = 'GET A QUOTE';
+                ctaLink.href = 'https://wa.me/56987767767?text=Hello%20Manuel,%20I%20would%20like%20to%20get%20a%20quote%20for%20corporate%20event%20music.';
+            } else {
+                currentLang = 'es';
+                document.documentElement.lang = 'es';
+                langBtn.textContent = 'English';
+                pageTitle.textContent = 'Manuel Olivares | Música para Eventos Corporativos';
+                mainDesc.textContent = 'Excelencia en música para eventos corporativos y ceremonias.';
+                ctaLink.textContent = 'COTIZAR EVENTO';
+                ctaLink.href = 'https://wa.me/56987767767?text=Hola%20Manuel,%20quiero%20cotizar%20música%20para%20un%20evento%20corporativo.';
+            }
+        }
+    </script>
 </body>
 </html>
